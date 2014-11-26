@@ -6,6 +6,7 @@ require 'user_agent/version'
 class UserAgent
   # http://www.texsoft.it/index.php?m=sw.php.useragent
   MATCHER = %r{
+    ^['"]*             # Possible opening quote(s)
     ^([^/\s]+)                     # Product
     /?([^\s,]*)                    # Version
     (\s\(([^\)]*)\)|,gzip\(gfe\))? # Comment
