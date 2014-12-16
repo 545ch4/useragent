@@ -27,6 +27,8 @@ class UserAgent
             nil
           elsif /^Windows / =~ comment[0]
             'Windows'
+          elsif comment[1] =~ /^Android/
+            'Android'
           else
             comment[0]
           end
