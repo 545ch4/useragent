@@ -4,7 +4,7 @@ class UserAgent
       include Comparable
 
       def <=>(other)
-        if respond_to?(:browser) && other.respond_to?(:browser) &&
+        if respond_to?(:browser, true) && other.respond_to?(:browser, true) &&
             browser == other.browser
           version <=> Version.new(other.version)
         else
@@ -44,8 +44,8 @@ class UserAgent
         nil
       end
 
-      def respond_to?(symbol)
-        detect_product(symbol) ? true : super
+      def respond_to?(symbol, include_all = false)
+        detect_product(symbol) ? true : (include_all ? super : false)
       end
 
       def method_missing(method, *args, &block)

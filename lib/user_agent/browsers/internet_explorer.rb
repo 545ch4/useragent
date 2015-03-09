@@ -18,7 +18,7 @@ class UserAgent
       end
 
       def compatibility_view?
-        version == "7.0" && application.comment.detect { |c| c['Trident/'] }
+        version == "7.0" && !application.comment.detect{ |c| c['Trident/'] }.nil?
       end
 
       # Before version 4.0, Chrome Frame declared itself (unversioned) in a comment;

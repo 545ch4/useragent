@@ -41,7 +41,7 @@ class UserAgent
       @version = Version.new
     end
 
-    if comment.respond_to?(:split)
+    if comment.respond_to?(:split, true)
       @comment = comment.split("; ")
     else
       @comment = comment

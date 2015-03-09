@@ -154,7 +154,7 @@ describe "UserAgent: 'Opera/9.80 (J2ME/MIDP; Opera Mini/9 (Compatible; MSIE:9.0;
 
   it_should_behave_like "Opera browser"
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: 'Opera/9.80 (J2ME/MIDP; Opera Mini/9.80 (J2ME/23.377; U; en) Presto/2.5.25 Version/10.54'" do
@@ -164,7 +164,7 @@ describe "UserAgent: 'Opera/9.80 (J2ME/MIDP; Opera Mini/9.80 (J2ME/23.377; U; en
 
   it_should_behave_like "Opera browser"
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 # http://www.useragentstring.com/Opera%20Mini9.80_id_17936.php

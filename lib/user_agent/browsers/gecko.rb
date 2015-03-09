@@ -13,7 +13,7 @@ class UserAgent
       ).freeze
 
       def browser
-        GeckoBrowsers.detect { |browser| respond_to?(browser) } || super
+        GeckoBrowsers.detect { |browser| respond_to?(browser, true) } || super
       end
 
       def version

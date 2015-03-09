@@ -41,7 +41,7 @@ describe "UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us) Ap
     expect(@useragent.localization).to eq("en-us")
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_3; en-us) AppleWebKit/526.9 (KHTML, like Gecko) Version/4.0dp1 Safari/526.8'" do
@@ -75,7 +75,7 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_3; en-us) A
     expect(@useragent.localization).to eq("en-us")
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en) AppleWebKit/526.9 (KHTML, like Gecko) Version/4.0dp1 Safari/526.8'" do
@@ -109,7 +109,7 @@ describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en) AppleWebKit/5
     expect(@useragent.localization).to eq("en")
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_3; en-us) AppleWebKit/525.18 (KHTML, like Gecko) Version/3.1.1 Safari/525.18'" do
@@ -599,7 +599,7 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit
     expect(@useragent.localization).to eq("en")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4A102 Safari/419'" do
@@ -633,7 +633,7 @@ describe "UserAgent: 'Mozilla/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/4
     expect(@useragent.localization).to eq("en")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B367 Safari/531.21.10" do
@@ -667,7 +667,7 @@ describe "UserAgent: Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) Appl
     expect(@useragent.localization).to eq("en-us")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_1_3 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7E18 Safari/528.16'" do
@@ -733,7 +733,7 @@ describe "UserAgent: 'Mozilla/5.0 (iPod; U; CPU iPhone OS 3_1_3 like Mac OS X; e
     expect(@useragent.localization).to eq("en-us")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-us) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4'" do
@@ -767,7 +767,7 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-us) A
     expect(@useragent.localization).to eq("en-us")
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_1 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8B117 Safari/6531.22.7'" do
@@ -801,7 +801,7 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_1 like Mac OS X; e
     expect(@useragent.localization).to eq("en-us")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0_1 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Mobile/8A306'" do
@@ -835,7 +835,7 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0_1 like Mac OS X;
     expect(@useragent.localization).to eq("en-us")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (iPhone Simulator; U; CPU iPhone OS 4_0_1 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A306 Safari/6531.22.7'" do
@@ -869,7 +869,7 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone Simulator; U; CPU iPhone OS 4_0_1 like
     expect(@useragent.localization).to eq("en-us")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Linux; U; Android 1.5; de-; HTC Magic Build/PLAT-RC33) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1'" do
@@ -901,7 +901,7 @@ describe "UserAgent: 'Mozilla/5.0 (Linux; U; Android 1.5; de-; HTC Magic Build/P
     expect(@useragent.os).to eq("Android 1.5")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en) AppleWebKit/534.1+ (KHTML, Like Gecko) Version/6.0.0.141 Mobile Safari/534.1+'" do
@@ -933,7 +933,7 @@ describe "UserAgent: 'Mozilla/5.0 (BlackBerry; U; BlackBerry 9800; en) AppleWebK
     expect(@useragent.os).to eq("BlackBerry 9800")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (BB10; Touch) AppleWebKit/537.3+ (KHTML, like Gecko) Version/10.0.9.388 Mobile Safari/537.3+'" do
@@ -965,7 +965,7 @@ describe "UserAgent: 'Mozilla/5.0 (BB10; Touch) AppleWebKit/537.3+ (KHTML, like 
     expect(@useragent.os).to eq("Touch")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/534.51.22 (KHTML, like Gecko) Version/5.1.1 Safari/534.51.22" do
@@ -1005,7 +1005,7 @@ describe "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/534.51.22 (
     expect(@useragent.localization).to be_nil
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/534.52.7 (KHTML, like Gecko)" do
@@ -1047,5 +1047,5 @@ describe "UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/
     expect(@useragent.os).to eq("OS X 10.9.5")
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end

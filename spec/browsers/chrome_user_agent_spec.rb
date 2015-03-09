@@ -95,7 +95,7 @@ describe "UserAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) Ap
     expect(@useragent.os).to eq("CPU iPhone OS 6_1_3 like Mac OS X")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.40 Safari/537.17" do
@@ -157,7 +157,7 @@ describe "Mozilla/5.0 (Linux; Android 4.2; Nexus 7 Build/JOP40C) AppleWebKit/535
     expect(@useragent.os).to eq("Android 4.2")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 

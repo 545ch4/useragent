@@ -37,7 +37,7 @@ describe 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0b8) Gecko/20100101 
     expect(@useragent.localization).to be_nil
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13' do
@@ -67,7 +67,7 @@ describe 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.13) Ge
     expect(@useragent.localization).to eq("en-US")
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008070206 Firefox/3.0.1'" do
@@ -97,7 +97,7 @@ describe "UserAgent: 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/
     expect(@useragent.localization).to eq("en-US")
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0'" do
@@ -123,7 +123,7 @@ describe "UserAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Fi
     expect(@useragent.os).to eq("Linux x86_64")
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14'" do

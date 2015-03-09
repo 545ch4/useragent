@@ -146,7 +146,7 @@ describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Triden
       UserAgent.parse('Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.2; ARM; Trident/6.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0)').version
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; ARM; Trident/6.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0)'" do
@@ -164,8 +164,8 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; ARM; Tr
     expect(@useragent.os).to eq("Windows 8")
   end
 
-  it { expect(@useragent).to be_compatibility_view }
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.compatibility_view?).to eq(true) }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch)'" do
@@ -183,8 +183,8 @@ describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; T
     expect(@useragent.os).to eq("Windows 8")
   end
 
-  it { expect(@useragent).not_to be_compatibility_view }
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.compatibility_view?).to eq(false) }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'" do
@@ -202,7 +202,7 @@ describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident
     expect(@useragent.os).to eq("Windows 7")
   end
 
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'" do
@@ -220,8 +220,8 @@ describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident
     expect(@useragent.os).to eq("Windows 7")
   end
 
-  it { expect(@useragent).not_to be_compatibility_view }
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.compatibility_view?).to eq(false) }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C)' Compat View" do
@@ -239,8 +239,8 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; 
     expect(@useragent.os).to eq("Windows 7")
   end
 
-  it { expect(@useragent).to be_compatibility_view }
-  it { expect(@useragent).not_to be_mobile }
+  it { expect(@useragent.compatibility_view?).to eq(true) }
+  it { expect(@useragent.mobile?).to eq(false) }
 end
 
 describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)'" do
@@ -338,7 +338,7 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows Phone OS 7.0; T
     expect(@useragent.os).to eq("Windows Phone OS 7.0")
   end
 
-  it { expect(@useragent).to be_mobile }
+  it { expect(@useragent.mobile?).to eq(true) }
 end
 
 describe "Non-Chrome Frame browsers" do
