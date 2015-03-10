@@ -487,14 +487,16 @@ describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Tri
   it_should_behave_like "Internet Explorer browser"
 
   it "should return '10.0' as its version" do
-    @useragent.version.should == "10.0"
+    expect(@useragent.version).to eq("10.0")
   end
 
   it "should return 'Windows Phone 8.0' as its os" do
-    @useragent.os.should == "Windows Phone 8.0"
+    expect(@useragent.os).to eq("Windows Phone 8.0")
   end
 
-  it { @useragent.should be_mobile }
+  it "should be a mobile browser" do
+    expect(@useragent.mobile?).to eq(true)
+  end
 end
 
 describe "Non-Chrome Frame browsers" do

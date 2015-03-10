@@ -6,8 +6,8 @@ require 'user_agent/version'
 class UserAgent
   # http://www.texsoft.it/index.php?m=sw.php.useragent
   MATCHER = %r{
-    ^['"]*             # Possible opening quote(s)
-    ^([^/\s]+)                     # Product
+    ^['"]*                         # Possible opening quote(s)
+    ([^/\s]+)                      # Product
     /?([^\s,]*)                    # Version
     (\s\(([^\)]*)\)|,gzip\(gfe\))? # Comment
   }x.freeze
@@ -15,7 +15,7 @@ class UserAgent
   DEFAULT_USER_AGENT = "Mozilla/4.0 (compatible)"
 
   def self.parse(string)
-    if string.nil? || string.strip == ""
+    if string.to_s.strip.empty?
       string = DEFAULT_USER_AGENT
     end
 
