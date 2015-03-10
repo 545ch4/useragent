@@ -21,8 +21,13 @@ describe "UserAgent: nil" do
     expect(@useragent.os).to eq(nil)
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
-  it { expect(@useragent.bot?).to be(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: ''" do
@@ -46,8 +51,13 @@ describe "UserAgent: ''" do
     expect(@useragent.os).to eq(nil)
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
-  it { expect(@useragent.bot?).to be(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/4.0 (compatible)'" do
@@ -71,8 +81,13 @@ describe "UserAgent: 'Mozilla/4.0 (compatible)'" do
     expect(@useragent.os).to eq(nil)
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
-  it { expect(@useragent.bot?).to be(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/5.0'" do
@@ -96,8 +111,13 @@ describe "UserAgent: 'Mozilla/5.0'" do
     expect(@useragent.os).to eq(nil)
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
-  it { expect(@useragent.bot?).to be(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'amaya/9.51 libwww/5.4.0'" do
@@ -116,6 +136,14 @@ describe "UserAgent: 'amaya/9.51 libwww/5.4.0'" do
   it "should return '5.4.0' as its libwww version" do
     expect(@useragent.libwww.version).to eq("5.4.0")
   end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Rails Testing'" do
@@ -130,7 +158,14 @@ describe "UserAgent: 'Rails Testing'" do
   it { expect(@useragent.version).to be_nil }
   it { expect(@useragent.platform).to be_nil }
   it { expect(@useragent.os).to be_nil }
-  it { expect(@useragent.mobile?).to eq(false) }
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Python-urllib/2.7'" do
@@ -148,7 +183,14 @@ describe "UserAgent: 'Python-urllib/2.7'" do
 
   it { expect(@useragent.platform).to be_nil }
   it { expect(@useragent.os).to be_nil }
-  it { expect(@useragent.mobile?).to eq(false) }
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'check_http/v1.4.15 (nagios-plugins 1.4.15)'" do
@@ -166,7 +208,14 @@ describe "UserAgent: 'check_http/v1.4.15 (nagios-plugins 1.4.15)'" do
 
   it { expect(@useragent.platform).to be_nil }
   it { expect(@useragent.os).to be_nil }
-  it { expect(@useragent.mobile?).to eq(false) }
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: '/WebTest.pm'" do

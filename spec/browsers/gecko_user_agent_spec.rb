@@ -37,7 +37,13 @@ describe 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0b8) Gecko/20100101 
     expect(@useragent.localization).to be_nil
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13' do
@@ -67,7 +73,13 @@ describe 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.13) Ge
     expect(@useragent.localization).to eq("en-US")
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008070206 Firefox/3.0.1'" do
@@ -97,7 +109,13 @@ describe "UserAgent: 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/
     expect(@useragent.localization).to eq("en-US")
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0'" do
@@ -123,7 +141,13 @@ describe "UserAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Fi
     expect(@useragent.os).to eq("Linux x86_64")
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14'" do
@@ -151,6 +175,14 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1
 
   it "should return 'en-US' as its localization" do
     expect(@useragent.localization).to eq("en-US")
+  end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
   end
 end
 
@@ -180,6 +212,14 @@ describe "UserAgent: 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1
   it "should return 'en-US' as its localization" do
     expect(@useragent.localization).to eq("en-US")
   end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1'" do
@@ -207,6 +247,14 @@ describe "UserAgent: 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:16.0.1) Gecko/20121
 
   it "should return nil as its localization" do
     expect(@useragent.localization).to be_nil
+  end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
   end
 end
 
@@ -473,8 +521,12 @@ describe 'Mozilla/5.0 (Android; Mobile; rv:19.0) Gecko/19.0 Firefox/19.0' do
     @useragent = UserAgent.parse('Mozilla/5.0 (Android; Mobile; rv:19.0) Gecko/19.0 Firefox/19.0')
   end
 
-  it "should return true for mobile?" do
-    expect(@useragent.mobile?).to be_truthy
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should be a mobile browser" do
+    expect(@useragent.mobile?).to eq(true)
   end
 end
 

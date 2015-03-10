@@ -53,7 +53,7 @@ class UserAgent
       end
 
       def mobile?
-        if detect_product('Mobile') || detect_comment('Mobile')
+        if detect_product('Mobile') || has_comment?{ |c| c =~ /mobile/i }
           true
         elsif os =~ /Android/
           true
@@ -78,10 +78,12 @@ class UserAgent
         # If you want to expand the scope, override the method and
         # provide your own regexp. Any patches to future extend this
         # list will be rejected.
+        elsif has_comment?{ |c| c =~ /bot/i }
+          true
         elsif comment = application.comment
-          comment.any? { |c| c =~ /bot/i }
+          comment.any?{ |c| c =~ /bot/i }
         elsif product = application.product
-          product.include?('bot')
+          product.downcase.include?('bot')
         else
           false
         end
@@ -94,6 +96,10 @@ class UserAgent
 
         def detect_comment(comment)
           detect { |useragent| useragent.comment && useragent.comment.include?(comment) }
+        end
+
+        def has_comment?(&block)
+          inject(false) { |t, useragent| t || (useragent.comment && useragent.comment.any?(&block)) }
         end
     end
   end

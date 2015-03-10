@@ -29,6 +29,29 @@ describe "UserAgent: Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gec
     expect(@useragent.version).to be >
       UserAgent.parse("Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)").version
   end
+
+  it "should have a higher version number than '10.0'" do
+    expect(@useragent.version).to be > '10.0'
+  end
+
+  it "should have a higher or equal version number than '10.0'" do
+    expect(@useragent.version).to be >= '10.0'
+  end
+
+  it "should have a smaller version number than '12.0'" do
+    expect(@useragent.version).to be < '12.0'
+  end
+  it "should have a smaller or equal version number than '10.0'" do
+    expect(@useragent.version).to be <= '11.0'
+  end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko" do
@@ -45,6 +68,14 @@ describe "UserAgent: Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gec
   it "should return 'Windows 8.1' as its os" do
     expect(@useragent.os).to eq("Windows 8.1")
   end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko" do
@@ -60,6 +91,14 @@ describe "UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) l
 
   it "should return 'Windows 7' as its os" do
     expect(@useragent.os).to eq("Windows 7")
+  end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
   end
 end
 
@@ -82,6 +121,14 @@ describe "UserAgent: Mozilla/5.0 (IE 11.0; Windows NT 6.3; Trident/7.0; .NET4.0E
     expect(@useragent.version).to be >
       UserAgent.parse("Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)").version
   end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko" do
@@ -103,6 +150,14 @@ describe "UserAgent: Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gec
     expect(@useragent.version).to be >
       UserAgent.parse("Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)").version
   end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'" do
@@ -123,6 +178,14 @@ describe "UserAgent: 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) 
   it "should have a higher version number than IE10" do
     expect(@useragent.version).to be >
       UserAgent.parse('Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)').version
+  end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
   end
 end
 
@@ -146,7 +209,13 @@ describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Triden
       UserAgent.parse('Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.2; ARM; Trident/6.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0)').version
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; ARM; Trident/6.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0)'" do
@@ -165,7 +234,14 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; ARM; Tr
   end
 
   it { expect(@useragent.compatibility_view?).to eq(true) }
-  it { expect(@useragent.mobile?).to eq(false) }
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch)'" do
@@ -184,7 +260,14 @@ describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; T
   end
 
   it { expect(@useragent.compatibility_view?).to eq(false) }
-  it { expect(@useragent.mobile?).to eq(false) }
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'" do
@@ -202,7 +285,13 @@ describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident
     expect(@useragent.os).to eq("Windows 7")
   end
 
-  it { expect(@useragent.mobile?).to eq(false) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'" do
@@ -221,7 +310,14 @@ describe "UserAgent: 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident
   end
 
   it { expect(@useragent.compatibility_view?).to eq(false) }
-  it { expect(@useragent.mobile?).to eq(false) }
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C)' Compat View" do
@@ -240,6 +336,14 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; 
   end
 
   it { expect(@useragent.compatibility_view?).to eq(true) }
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
   it { expect(@useragent.mobile?).to eq(false) }
 end
 
@@ -257,6 +361,14 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)'" do
   it "should return 'Windows Vista' as its os" do
     expect(@useragent.os).to eq("Windows Vista")
   end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)'" do
@@ -268,6 +380,10 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)'" 
 
   it "should return '6.0' as its version" do
     expect(@useragent.version).to eq("6.0")
+  end
+
+  it "should not have a higher version than '10.0'" do
+    expect(@useragent.version).not_to be >= '10.0'
   end
 
   it "should return 'Windows XP' as its os" do
@@ -305,6 +421,14 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)'" 
   it "should not be <= 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.1)'" do
     expect(@useragent).not_to be <= UserAgent.parse("Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.1)")
   end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
+  end
 end
 
 describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.1)'" do
@@ -320,6 +444,14 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.1)'" do
 
   it "should return 'Windows XP' as its os" do
     expect(@useragent.os).to eq("Windows XP")
+  end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
   end
 end
 
@@ -338,7 +470,13 @@ describe "UserAgent: 'Mozilla/4.0 (compatible; MSIE 7.0; Windows Phone OS 7.0; T
     expect(@useragent.os).to eq("Windows Phone OS 7.0")
   end
 
-  it { expect(@useragent.mobile?).to eq(true) }
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should be a mobile browser" do
+    expect(@useragent.mobile?).to eq(true)
+  end
 end
 
 describe "Non-Chrome Frame browsers" do
@@ -350,6 +488,14 @@ describe "Non-Chrome Frame browsers" do
 
   it "shouldn't pose as chromeframe" do
     expect(@useragent.chromeframe).to be_nil
+  end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
   end
 end
 
@@ -366,6 +512,14 @@ describe "Chrome Frame installs before version 4.0" do
 
   it "shouldn't have a version" do
     expect(@useragent.chromeframe).not_to respond_to(:version)
+  end
+
+  it "should not be a bot" do
+    expect(@useragent.bot?).not_to eq(true)
+  end
+
+  it "should not be mobile browser" do
+    expect(@useragent.mobile?).not_to eq(true)
   end
 end
 

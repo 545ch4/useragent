@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
     "lib/user_agent/version.rb",
     "lib/useragent.rb",
     "LICENSE",
-    "README.rdoc"
+    "README.md"
   ]
 
   s.add_development_dependency "rake"
